@@ -57,8 +57,9 @@ impl bb8::ManageConnection for PostgresConnectionManager {
         conn.batch_execute("")
     }
 
-    fn has_broken(&self, conn: &mut Self::Connection) -> bool {
-        conn.is_desynchronized()
+    fn has_broken(&self, _conn: &mut Self::Connection) -> bool {
+        false
+        // conn.is_desynchronized()
     }
 
     fn timed_out(&self) -> Self::Error {
